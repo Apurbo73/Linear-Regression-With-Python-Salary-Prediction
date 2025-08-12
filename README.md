@@ -1,8 +1,6 @@
 ### Salary Prediction
 
 
-Alright — let’s go full deep-dive on **pandas** (the Python data analysis library) in the context of **machine learning**.
-I’ll walk you through what it is, why it’s used, core features, and how it fits into ML workflows — plus best practices and common pitfalls.
 
 ---
 
@@ -189,7 +187,3 @@ model.fit(X_train, y_train)
 
 ---
 
-If you want, I can create a **visual ML workflow chart** showing exactly where pandas fits in from raw data → model predictions.
-That would make this “everything about pandas in ML” even more complete.
-
-Do you want me to add that?
