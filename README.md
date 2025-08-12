@@ -187,3 +187,156 @@ model.fit(X_train, y_train)
 
 ---
 
+
+
+
+---
+
+# **1. NumPy in Machine Learning**
+
+NumPy (**Numerical Python**) is a core Python library for **fast numerical computation**.
+It’s the *foundation* of pandas, scikit-learn, and many ML frameworks.
+
+---
+
+## **Why NumPy is important for ML**
+
+* **Speed** → Uses C under the hood for fast array operations.
+* **Multi-dimensional arrays (ndarrays)** for representing vectors, matrices, and tensors.
+* **Mathematical operations**: linear algebra, statistics, Fourier transforms, random sampling.
+* **Memory efficiency** → Stores data in contiguous memory blocks.
+* **Interoperability** → Works seamlessly with pandas, scikit-learn, PyTorch, TensorFlow.
+
+---
+
+## **Core NumPy Features**
+
+```python
+import numpy as np
+
+# Create arrays
+a = np.array([1, 2, 3])
+b = np.array([[1, 2], [3, 4]])
+
+# Element-wise operations
+c = a * 2        # [2, 4, 6]
+d = b + 10       # [[11, 12], [13, 14]]
+
+# Mathematical functions
+np.mean(a)       # average
+np.std(a)        # standard deviation
+
+# Linear algebra
+np.dot(a, a)     # dot product
+np.linalg.inv([[1, 2], [3, 4]])  # matrix inverse
+```
+
+---
+
+## **In ML, NumPy is used for:**
+
+1. **Raw data representation** → before converting to DataFrames.
+2. **Matrix math** → for gradient calculations, dot products.
+3. **Weight initialization** in neural networks.
+4. **Performance optimization** for batch operations.
+5. **Random sampling** for train/test splits or synthetic datasets.
+
+---
+
+# **2. Matplotlib in Machine Learning**
+
+Matplotlib is Python’s most widely used **data visualization** library.
+It’s the “plotting engine” behind pandas `.plot()` and is often paired with **Seaborn** for prettier charts.
+
+---
+
+## **Why Matplotlib is important for ML**
+
+* Visualizing **data distributions** before training.
+* Tracking **model performance** over epochs (loss curves, accuracy).
+* Creating **confusion matrices** and **ROC curves**.
+* Debugging → seeing where predictions go wrong.
+
+---
+
+## **Core Matplotlib Workflow**
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.plot(x, y, label="sin(x)")
+plt.xlabel("X values")
+plt.ylabel("Y values")
+plt.title("Sine Wave")
+plt.legend()
+plt.show()
+```
+
+---
+
+## **In ML, Matplotlib is used for:**
+
+1. **Exploratory Data Analysis (EDA)**
+
+   ```python
+   plt.hist(df['age'], bins=20)
+   plt.show()
+   ```
+
+2. **Model training curves**
+
+   ```python
+   plt.plot(history.history['loss'], label='Train Loss')
+   plt.plot(history.history['val_loss'], label='Val Loss')
+   plt.legend()
+   ```
+
+3. **Evaluation metrics**
+
+   ```python
+   from sklearn.metrics import confusion_matrix
+   import seaborn as sns
+
+   cm = confusion_matrix(y_true, y_pred)
+   sns.heatmap(cm, annot=True, fmt="d")
+   ```
+
+---
+
+# **3. How pandas, NumPy, and Matplotlib fit together in ML**
+
+Think of them as a **data science toolkit**:
+
+* **NumPy** → The math engine (fast arrays, matrix ops).
+* **pandas** → The spreadsheet brain (structured, labeled data).
+* **Matplotlib** → The artist (plots & visualizations).
+
+**Example ML mini-pipeline:**
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load data
+df = pd.read_csv("data.csv")
+
+# Clean data
+df.dropna(inplace=True)
+
+# Convert to NumPy for modeling
+X = df.drop('target', axis=1).values
+y = df['target'].values
+
+# Simple visualization
+plt.scatter(X[:, 0], X[:, 1], c=y)
+plt.show()
+```
+
+---
+
+
